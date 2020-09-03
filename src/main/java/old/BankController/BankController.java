@@ -1,4 +1,4 @@
-package ee.bcs.valiit.oldcontroller;
+package old.BankController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;

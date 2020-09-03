@@ -1,4 +1,4 @@
-package ee.bcs.valiit.Lessons;
+package old.Lessons;
 
 import java.util.Random;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package ee.bcs.valiit.Lessons;
+package old.Lessons;
 
 import java.io.File;
 import java.io.FileNotFoundException;

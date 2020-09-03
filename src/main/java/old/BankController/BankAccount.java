@@ -1,4 +1,4 @@
-package ee.bcs.valiit.oldcontroller;
+package old.BankController;
 
 import java.math.BigDecimal;
 

@@ -1,9 +1,9 @@
-package ee.bcs.valiit.oldcontroller;
+package old.BankController;
 
-import ee.bcs.valiit.Lessons.Employee;
-import ee.bcs.valiit.Lessons.Lesson1MathUtil;
-import ee.bcs.valiit.Lessons.Lesson2;
-import ee.bcs.valiit.Lessons.Lesson3;
+import old.Lessons.Employee;
+import old.Lessons.Lesson1MathUtil;
+import old.Lessons.Lesson2;
+import old.Lessons.Lesson3;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

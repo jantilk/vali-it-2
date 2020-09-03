@@ -1,6 +1,5 @@
-package ee.bcs.valiit.oldcontroller;
+package old.BankController;
 
-import org.apache.catalina.core.ApplicationContext;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;

@@ -1,4 +1,4 @@
-package ee.bcs.valiit.Lessons;
+package old.Lessons;
 
 public class Employee {
 
