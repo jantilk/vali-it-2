@@ -1,4 +1,4 @@
-package ee.bcs.valiit;
+package ee.bcs.valiit.Lessons;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,23 +101,17 @@ public class Lesson3 {
 
     public static boolean isPrime(Integer x) {
         // TODO tagasta kas sisestatud arv on primaar arv (jagub ainult 1 ja iseendaga)
-        boolean check;
-        List<Integer> notPrime = new ArrayList<>();
+        boolean check = false;
 
-        for (int i = 1; i < x; i++) {
-            if (x/x != 1 && x%i == 0) {
-                notPrime.add(i);
-            }
-        }
-
-        for (int i = 0; i < x; i++) {
-            if (x % notPrime.get(i) != 0 && x/x == 1) {
+        for (int i = 2; i < x-1; i++) {
+            if (x%i == 0) {
+                check = false;
+                return check;
+            } else {
                 check = true;
+                return check;
             }
         }
-        check = false;
-
-        System.out.println(check);
         return check;
     }
 

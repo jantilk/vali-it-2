@@ -1,17 +1,18 @@
-package ee.bcs.valiit.controller;
+package ee.bcs.valiit.oldcontroller;
 
-import ee.bcs.valiit.Lesson1MathUtil;
-import ee.bcs.valiit.Lesson2;
-import ee.bcs.valiit.Lesson3;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import ee.bcs.valiit.Lessons.Employee;
+import ee.bcs.valiit.Lessons.Lesson1MathUtil;
+import ee.bcs.valiit.Lessons.Lesson2;
+import ee.bcs.valiit.Lessons.Lesson3;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class TestController {
+
+    private final List<Employee> employees = new ArrayList();
 
     //@GetMapping(value="/")
     //public String getHelloWorld(){
@@ -77,5 +78,41 @@ public class TestController {
     public Boolean isPrime(@RequestParam("x") Integer x) {
         return Lesson3.isPrime(x);
     }
+
+    // week 2 day 1
+
+    @GetMapping("employees")
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    @GetMapping("employees/{index}")
+    public Employee getEmployeeByIndex(@PathVariable("index") Integer index) {
+        return employees.get(index);
+    }
+
+    @PutMapping("employees/{index}")
+    public Employee putEmployee(@RequestBody() Employee employee, @PathVariable("index") Integer index) {
+        employees.set(index, employee);
+        return employees.get(index);
+    }
+
+    @PostMapping("employees")
+    public void postEmployee(@RequestBody() Employee employee){
+        System.out.println(employee.getEmployee());
+        employees.add(employee);
+    }
+
+    @DeleteMapping("employees/{index}")
+    public void deleteEmployeeByIndex(@PathVariable("index") int index) {
+        System.out.println("Delete " + employees.get(index));
+
+        employees.remove(index);
+    }
+
+
+
+
+
 
 }
