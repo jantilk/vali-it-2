@@ -1,0 +1,78 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: jantilk
+      changes:
+        - createTable:
+            tableName: account
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: account_number
+                  type: text
+              - column:
+                  name: balance
+                  type: numeric
+              - column:
+                  name: customer_id
+                  type: bigint
+  - changeSet:
+      id: 2
+      author: jantilk
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_name
+                  type: text
+        - addForeignKeyConstraint:
+            baseColumnNames: customer_id
+            baseTableName: account
+            constraintName: fk_account_on
+            referencedColumnNames: id
+            referencedTableName: user
+  - changeSet:
+      id: 3
+      author: jantilk
+      changes:
+        - renameTable:
+            newTableName: customers
+            oldTableName: user
+  - changeSet:
+      id: 4
+      author: jantilk
+      changes:
+        - renameTable:
+            newTableName: customer
+            oldTableName: customers
+        - dropColumn:
+            columnName: customer_id
+            tableName: account
+  - changeSet:
+      id: 5
+      author: jantilk
+      changes:
+        - addColumn:
+            tableName: account
+              columns:
+                - column:
+                    name: customer_id
+                    type: int
+                    constraints:
+                      foreignKeyName: fk_account_customer
+                      nullable: false
+                      references: customer(id)

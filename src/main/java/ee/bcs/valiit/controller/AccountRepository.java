@@ -39,13 +39,14 @@ public class AccountRepository {
         return accountsRequests;
     }
 
-    public void createAccount(BigInteger id, String accountNumber, BigDecimal balance) {
-        String sql = "INSERT INTO account (id, account_number, balance) " +
-                    "VALUES (:id, :accountNumber, :balance)";
+    public void createAccount(BigInteger id, String accountNumber, BigDecimal balance, int customer_id) {
+        String sql = "INSERT INTO account (id, account_number, balance, customer_id) " +
+                    "VALUES (:id, :accountNumber, :balance, :customer_id)";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("id", id);
         paramMap.put("accountNumber", accountNumber);
         paramMap.put("balance", balance);
+        paramMap.put("customer_id", customer_id);
         jdbcTemplate.update(sql, paramMap);
     }
 }

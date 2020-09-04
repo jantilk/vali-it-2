@@ -7,6 +7,16 @@ public class AccountsRequest {
     String accountNumber;
     BigDecimal balance;
 
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
+    }
+
+    int customer_id;
+
     public Long getId() {
         return id;
     }

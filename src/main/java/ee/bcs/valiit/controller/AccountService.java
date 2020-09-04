@@ -31,6 +31,7 @@ public class AccountService {
         BigDecimal toAccountBalance = accountRepository.getBalance(toAccount);
         toAccountBalance = toAccountBalance.add(amount);
         accountRepository.updateBalance(toAccount, toAccountBalance);
+        accountRepository.updateBalance();
     }
 
 
@@ -52,8 +53,8 @@ public class AccountService {
         return accountRepository.getAccounts();
     }
 
-    public void createAccount(BigInteger id, String accountNumber, BigDecimal balance) {
-        accountRepository.createAccount(id, accountNumber, balance);
+    public void createAccount(BigInteger id, String accountNumber, BigDecimal balance, int customer_id) {
+        accountRepository.createAccount(id, accountNumber, balance, customer_id);
     }
 }
 

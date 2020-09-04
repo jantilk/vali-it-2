@@ -11,8 +11,17 @@ import java.util.List;
 public class BankController {
     @Autowired
     private AccountService accountService;
+
+
     private AccountRepository accountRepository;
 
+    @Autowired
+    private CustomerService customerService;
+
+    private CustomerRepository customerRepository;
+
+
+    // accounts *********************************************************************************
     @PutMapping("transfer")
     public void transfer(@RequestBody TransferMoneyRequest request) {
         accountService.transferMoney(request.getFromAccount(),
@@ -42,10 +51,18 @@ public class BankController {
         return accountService.allAccounts();
     }
 
-    @PostMapping("create")
+    @PostMapping("account/create")
     public void create(@RequestBody CreateAccountRequest request) {
         accountService.createAccount(request.getId(),
                                     request.getAccountNumber(),
-                                    request.getBalance());
+                                    request.getBalance(),
+                                    request.getCustomer_id());
     }
+
+    // customer ************************************************************************************
+    @PostMapping("customer/create")
+    public void createCustomer(@RequestBody CreateCustomerRequest request) {
+        customerService.createCustomer(request.getId(), request.getCustomerName());
+    }
+
 }
