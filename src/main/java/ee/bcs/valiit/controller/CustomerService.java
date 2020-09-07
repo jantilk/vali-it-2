@@ -11,7 +11,12 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
 
-    public void createCustomer(BigInteger id, String customerName) {
-        customerRepository.createCustomer(id, customerName);
+    public void createCustomer(String customerName) {
+        customerRepository.createCustomer(customerName);
     }
+
+    public void deleteCustomer(BigInteger id) {
+        customerRepository.deleteCustomer(id);
+    }
+
 }

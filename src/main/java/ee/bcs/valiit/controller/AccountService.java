@@ -1,5 +1,6 @@
 package ee.bcs.valiit.controller;
 
+import ee.bcs.valiit.controller.request.AccountsRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,39 +14,42 @@ public class AccountService {
     private AccountRepository accountRepository;
 
 
-    public void transferMoney(String fromAccount,
-                              String toAccount,
+    public void transferMoney(BigInteger fromAccountId,
+                              BigInteger toAccountId,
                               BigDecimal amount) {
-        BigDecimal fromAccountBalance = accountRepository.getBalance(fromAccount);
+        BigDecimal fromAccountBalance = accountRepository.getBalance(fromAccountId);
         if(fromAccountBalance.compareTo(amount) >= 0){
-            BigDecimal toAccountBalance = accountRepository.getBalance(toAccount);
+            BigDecimal toAccountBalance = accountRepository.getBalance(toAccountId);
             fromAccountBalance = fromAccountBalance.subtract(amount);
             toAccountBalance = toAccountBalance.add(amount);
-            accountRepository.updateBalance(fromAccount, fromAccountBalance);
-            accountRepository.updateBalance(toAccount, toAccountBalance);
+            accountRepository.updateBalance(fromAccountId, fromAccountBalance);
+            accountRepository.updateBalance(toAccountId, toAccountBalance);
+            accountRepository.updateTransactionHistory(amount.negate(), fromAccountId);
+            accountRepository.updateTransactionHistory(amount, toAccountId);
         }
     }
 
 
-    public void addMoney(String toAccount, BigDecimal amount) {
-        BigDecimal toAccountBalance = accountRepository.getBalance(toAccount);
+    public void addMoney(BigInteger accountId, BigDecimal amount) {
+        BigDecimal toAccountBalance = accountRepository.getBalance(accountId);
         toAccountBalance = toAccountBalance.add(amount);
-        accountRepository.updateBalance(toAccount, toAccountBalance);
-        accountRepository.updateBalance();
+        accountRepository.updateBalance(accountId, toAccountBalance);
+        accountRepository.updateTransactionHistory(amount, accountId);
     }
 
 
-    public void takeMoney(String fromAccount, BigDecimal amount) {
-        BigDecimal fromAccountBalance = accountRepository.getBalance(fromAccount);
+    public void takeMoney(BigInteger accountId, BigDecimal amount) {
+        BigDecimal fromAccountBalance = accountRepository.getBalance(accountId);
         if (fromAccountBalance.compareTo(amount) >= 0) {
             fromAccountBalance = fromAccountBalance.subtract(amount);
-            accountRepository.updateBalance(fromAccount, fromAccountBalance);
+            accountRepository.updateBalance(accountId, fromAccountBalance);
+            accountRepository.updateTransactionHistory(amount.negate(), accountId);
         }
     }
 
 
-    public BigDecimal balanceCheck(String fromAccount) {
-        return accountRepository.getBalance(fromAccount);
+    public BigDecimal balanceCheck(BigInteger accountId) {
+        return accountRepository.getBalance(accountId);
     }
 
 
@@ -53,8 +57,15 @@ public class AccountService {
         return accountRepository.getAccounts();
     }
 
-    public void createAccount(BigInteger id, String accountNumber, BigDecimal balance, int customer_id) {
-        accountRepository.createAccount(id, accountNumber, balance, customer_id);
+    public void createAccount(String accountNumber, BigDecimal balance, int customer_id) {
+        accountRepository.createAccount(accountNumber, balance, customer_id);
     }
+
+    public void deleteAccount(BigInteger id) {
+        accountRepository.deleteAccount(id);
+    }
+
+
+
 }
 

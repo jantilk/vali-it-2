@@ -48,5 +48,20 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="changelog-1.1" author="jantilk">
+        <dropColumn tableName="transaction_history" columnName="fromAccount"/>
+        <dropColumn tableName="transaction_history" columnName="toAccount"/>
+    </changeSet>
+    <changeSet id="changelog-1.2" author="jantilk">
+        <modifyDataType tableName="account" columnName="id" newDataType="bigint"/>
+    </changeSet>
+
+    <changeSet id="changelog-1.3" author="jantilk">
+        <addNotNullConstraint tableName="customer" columnName="customer_name"/>
+    </changeSet>
+    
+    <changeSet id="changelog-1.4" author="jantilk">
+        <dropColumn tableName="transaction_history" columnName="customer_id"/>
+    </changeSet>
 
 </databaseChangeLog>

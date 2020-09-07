@@ -1,4 +1,4 @@
-package ee.bcs.valiit.controller;
+package ee.bcs.valiit.controller.request;
 
 public class BalanceRequest {
     String fromAccount;

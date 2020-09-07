@@ -1,13 +1,14 @@
-package ee.bcs.valiit.controller;
+package ee.bcs.valiit.controller.request;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
-public class CreateAccountRequest {
-    BigInteger id;
+public class AccountsRequest {
+    Long id;
     String accountNumber;
     BigDecimal balance;
     int customer_id;
+
+
 
     public int getCustomer_id() {
         return customer_id;
@@ -17,11 +18,11 @@ public class CreateAccountRequest {
         this.customer_id = customer_id;
     }
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

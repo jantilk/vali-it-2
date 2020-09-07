@@ -14,11 +14,17 @@ public class CustomerRepository {
     private NamedParameterJdbcTemplate jdbcTemplate;
 
 
-    public void createCustomer(BigInteger id, String customerName) {
-        String sql = "INSERT INTO customer (id, customer_name) VALUES (:id, :customerName)";
+    public void createCustomer(String customerName) {
+        String sql = "INSERT INTO customer (customer_name) VALUES (:customerName)";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("customerName", customerName);
+        jdbcTemplate.update(sql, paramMap);
+    }
+
+    public void deleteCustomer(BigInteger id) {
+        String sql = "DELETE FROM customer WHERE id = :id";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("id", id);
-        paramMap.put("customerName", customerName);
         jdbcTemplate.update(sql, paramMap);
     }
 }
