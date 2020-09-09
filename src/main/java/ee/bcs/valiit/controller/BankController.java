@@ -31,9 +31,10 @@ public class BankController {
     }
 
     @PutMapping("add")
-    public void add(@RequestBody AddMoneyRequest request) {
+    public BigDecimal add(@RequestBody AddMoneyRequest request) {
         accountService.addMoney(request.getAccountId(),
                                 request.getAmount());
+        return accountService.balanceCheck(request.getAccountId());
     }
 
     @PutMapping("take")
@@ -59,20 +60,11 @@ public class BankController {
                                     request.getCustomer_id());
     }
 
-    @DeleteMapping("account/delete/{id}")
-    public void deleteAccount(@PathVariable("id") BigInteger id) {
-        accountService.deleteAccount(id);
-    }
 
     // customer ************************************************************************************
     @PostMapping("customer/create")
     public void createCustomer(@RequestBody CreateCustomerRequest request) {
         customerService.createCustomer(request.getCustomerName());
-    }
-
-    @DeleteMapping("customer/delete/{id}")
-    public void deleteCustomer(@PathVariable("id") BigInteger id) {
-        customerService.deleteCustomer(id);
     }
 
 }

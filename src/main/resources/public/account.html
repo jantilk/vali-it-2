@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>Bank</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="myStyle.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    </head>
+    <body>
+        <div id="nav-placeholder">
+
+        </div>
+        <script>
+            $(function(){
+                $("#nav-placeholder").load("navbar.html");
+            });
+        </script>
+        <div class="container">
+            <!--get balance-->
+            <div class="row">
+                <div class="col-sm-3">
+                    <input id="createNewAccountNumber" class="form-control" placeholder="new account number">
+                </div>
+                <div class="col-sm-3">
+                    <button id="createNewAccountButton" type="button" class="btn btn-primary">Create Account</button>
+                </div>
+                <div class="col-sm-3">
+                    <p id="createNewAccountResponse">waiting input...</p>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <input id="getBalanceText" class="form-control" placeholder="type account id">
+                </div>
+                <div class="col-sm-3">
+                    <button id="getBalanceButton" type="button" class="btn btn-primary">Get Balance</button>
+                </div>
+                <div class="col-sm-3">
+                    <p id="getBalanceResponse">waiting input...</p>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <!--add money-->
+            <div class="row">
+                <div class="col-sm-3">
+                    <input id="addMoneyAccountId" class="form-control" placeholder="type account id">
+                    <input id="addMoneyInput" class="form-control" placeholder="type amount">
+                </div>
+                <div class="col-sm-3">
+                    <button id="addMoneyButton" type="button" class="btn btn-primary">Add Money</button>
+                </div>
+                <div id="addMoneyResponse" class="col-sm-3">
+                    Waiting input...
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <!--take money-->
+            <div class="row">
+                <div class="col-sm-3">
+                    <input id="takeMoneyAccountId" class="form-control" placeholder="type account id">
+                    <input id="takeMoneyInput" class="form-control" placeholder="type amount">
+                </div>
+                <div class="col-sm-3">
+                    <button id="takeMoneyButton" type="button" class="btn btn-primary">Take Money</button>
+                </div>
+                <div id="takeMoneyResponse" class="col-sm-3">
+                    Waiting input...
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <!--transfer-->
+            <div class="row">
+                <div class="col-sm-3">
+                    <input id="transferFromAccountId" class="form-control" placeholder="type from account id">
+                    <input id="transferToAccountId" class="form-control" placeholder="type to account id">
+                    <input id="transferAmount" class="form-control" placeholder="type amount">
+                </div>
+                <div class="col-sm-3">
+                    <button id="transferButton" type="button" class="btn btn-primary">Transfer</button>
+                </div>
+                <div id="transferResponse" class="col-sm-3">
+                    Waiting input...
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
+                    <button id="showAllAccountsButton" type="button" class="btn btn-primary">Show all accounts</button>
+                </div>
+                <div class="col-sm-3">
+                    Waiting input...
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row">
+                <div id="showAllAccountsResponse"class="col-sm-3">
+                    Waiting input...
+                </div>
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+        </div>
+        <script src="accounts.js"></script>
+    </body>
+</html>
+

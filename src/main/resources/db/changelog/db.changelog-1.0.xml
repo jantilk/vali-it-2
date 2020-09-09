@@ -64,4 +64,21 @@
         <dropColumn tableName="transaction_history" columnName="customer_id"/>
     </changeSet>
 
+    <changeSet id="changelog-1.5" author="jantilk">
+        <dropForeignKeyConstraint baseTableName="account" constraintName="fk_account_customer" ></dropForeignKeyConstraint>
+    </changeSet>
+    <changeSet id="changelog-1.6" author="jantilk">
+        <addForeignKeyConstraint baseTableName="account" baseColumnNames="customer_id"
+                                 constraintName="fk_account_customer"
+                                 referencedTableName="customer"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet id="changelog-1.7" author="jantilk">
+        <dropNotNullConstraint tableName="transaction_history" columnName="account_id"/>
+    </changeSet>
+    <changeSet id="changelog-1.8" author="jantilk">
+        <dropNotNullConstraint tableName="account" columnName="customer_id"/>
+    </changeSet>
+
+
 </databaseChangeLog>

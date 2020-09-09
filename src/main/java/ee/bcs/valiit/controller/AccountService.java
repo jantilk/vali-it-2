@@ -30,11 +30,13 @@ public class AccountService {
     }
 
 
-    public void addMoney(BigInteger accountId, BigDecimal amount) {
+    public BigDecimal addMoney(BigInteger accountId, BigDecimal amount) {
         BigDecimal toAccountBalance = accountRepository.getBalance(accountId);
         toAccountBalance = toAccountBalance.add(amount);
         accountRepository.updateBalance(accountId, toAccountBalance);
         accountRepository.updateTransactionHistory(amount, accountId);
+        return accountRepository.getBalance(accountId);
+
     }
 
 
@@ -60,12 +62,5 @@ public class AccountService {
     public void createAccount(String accountNumber, BigDecimal balance, int customer_id) {
         accountRepository.createAccount(accountNumber, balance, customer_id);
     }
-
-    public void deleteAccount(BigInteger id) {
-        accountRepository.deleteAccount(id);
-    }
-
-
-
 }
 

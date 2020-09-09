@@ -58,12 +58,4 @@ public class AccountRepository {
         jdbcTemplate.update(sql, paramMap);
     }
 
-
-    public void deleteAccount(BigInteger id) {
-        String sql = "DELETE FROM account WHERE id = :id";
-        Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("id", id);
-        jdbcTemplate.update(sql, paramMap);
-    }
-
 }
