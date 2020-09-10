@@ -1,7 +1,10 @@
 //create account
 let createNewAccountButton = document.getElementById("createNewAccountButton");
-let createNewAccountResponse = document.getElementById("createNewAccountResponse");
 let createNewAccountNumber = document.getElementById("createNewAccountNumber");
+let createNewAccountBalance = document.getElementById("createNewAccountBalance");
+let createNewAccountUsername = document.getElementById("createNewAccountUsername");
+let createNewAccountPassword = document.getElementById("createNewAccountPassword");
+let createNewAccountResponse = document.getElementById("createNewAccountResponse");
 createNewAccountButton.addEventListener('click', function () {
     fetch('/account/create', {
         method: 'POST',
@@ -11,6 +14,8 @@ createNewAccountButton.addEventListener('click', function () {
         },
         body: JSON.stringify({
             accountNumber: createNewAccountNumber.value,
+            balance: createNewAccountBalance,
+            username
         })
     })
         .then(function(response) {

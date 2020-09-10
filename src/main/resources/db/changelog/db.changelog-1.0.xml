@@ -55,15 +55,12 @@
     <changeSet id="changelog-1.2" author="jantilk">
         <modifyDataType tableName="account" columnName="id" newDataType="bigint"/>
     </changeSet>
-
     <changeSet id="changelog-1.3" author="jantilk">
         <addNotNullConstraint tableName="customer" columnName="customer_name"/>
     </changeSet>
-    
     <changeSet id="changelog-1.4" author="jantilk">
         <dropColumn tableName="transaction_history" columnName="customer_id"/>
     </changeSet>
-
     <changeSet id="changelog-1.5" author="jantilk">
         <dropForeignKeyConstraint baseTableName="account" constraintName="fk_account_customer" ></dropForeignKeyConstraint>
     </changeSet>
@@ -78,6 +75,42 @@
     </changeSet>
     <changeSet id="changelog-1.8" author="jantilk">
         <dropNotNullConstraint tableName="account" columnName="customer_id"/>
+    </changeSet>
+    <changeSet id="changelog-1.9" author="jantilk">
+        <createTable tableName="signIn">
+            <column name="id" type="bigint"/>
+            <column name="username" type="text"/>
+            <column name="password" type="text"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="changelog-2.0" author="jantilk">
+        <dropNotNullConstraint tableName="signIn" columnName="username"/>
+        <dropNotNullConstraint tableName="signIn" columnName="password"/>
+    </changeSet>
+    <changeSet id="changelog-2.1" author="jantilk">
+        <addColumn tableName="account">
+            <column name="username_signIn" type="text">
+                <constraints foreignKeyName="fk account_username_signIn"/>
+            </column>
+            <column name="password_signIn" type="text">
+                <constraints foreignKeyName="fk_account_password_signIn"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="changelog-2.2" author="jantilk">
+        <dropColumn tableName="account" columnName="username_signIn"/>
+        <dropColumn tableName="account" columnName="password_signIn"/>
+        <dropTable tableName="signIn"/>
+    </changeSet>
+    <changeSet id="changelog-2.3" author="jantilk">
+        <addColumn tableName="customer">
+            <column name="username" type="text" defaultValue="">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="text" defaultValue="">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
     </changeSet>
 
 

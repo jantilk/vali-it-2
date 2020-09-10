@@ -59,8 +59,8 @@ public class AccountService {
         return accountRepository.getAccounts();
     }
 
-    public void createAccount(String accountNumber, BigDecimal balance, int customer_id) {
-        accountRepository.createAccount(accountNumber, balance, customer_id);
+    public void createAccount(String accountNumber, BigDecimal balance) {
+        accountRepository.createAccount(accountNumber, balance);
     }
 }
 
