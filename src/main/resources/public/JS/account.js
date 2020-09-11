@@ -1,32 +1,3 @@
-//create account
-let createNewAccountButton = document.getElementById("createNewAccountButton");
-let createNewAccountNumber = document.getElementById("createNewAccountNumber");
-let createNewAccountBalance = document.getElementById("createNewAccountBalance");
-let createNewAccountUsername = document.getElementById("createNewAccountUsername");
-let createNewAccountPassword = document.getElementById("createNewAccountPassword");
-let createNewAccountResponse = document.getElementById("createNewAccountResponse");
-createNewAccountButton.addEventListener('click', function () {
-    fetch('/account/create', {
-        method: 'POST',
-        cache: 'no-cache',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            accountNumber: createNewAccountNumber.value,
-            balance: createNewAccountBalance,
-            username
-        })
-    })
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(jsonData) {
-        })
-        .catch(function(err) {
-        });
-})
-
 //get balance
 let getBalanceButton = document.getElementById("getBalanceButton");
 let getBalanceResponse = document.getElementById("getBalanceResponse");
@@ -77,6 +48,7 @@ addMoneyButton.addEventListener('click', function () {
 })
 
 // take money
+// TODO kuva midagi kui ei õnnestu
 let takeMoneyButton = document.getElementById("takeMoneyButton");
 let takeMoneyResponse = document.getElementById("takeMoneyResponse");
 let takeMoneyInput = document.getElementById("takeMoneyInput");
@@ -104,6 +76,7 @@ takeMoneyButton.addEventListener('click', function () {
 })
 
 // transfer
+// TODO kuva midagi kui ei õnnestu
 let transferButton = document.getElementById("transferButton");
 let transferResponse = document.getElementById("transferResponse");
 let transferFromAccountId = document.getElementById("transferFromAccountId");

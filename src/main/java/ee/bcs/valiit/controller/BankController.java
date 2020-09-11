@@ -3,6 +3,7 @@ package ee.bcs.valiit.controller;
 import ee.bcs.valiit.controller.request.*;
 import ee.bcs.valiit.controller.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -14,17 +15,11 @@ public class BankController {
     @Autowired
     private AccountService accountService;
 
-
-    private AccountRepository accountRepository;
-
     @Autowired
     private CustomerService customerService;
 
-    private CustomerRepository customerRepository;
-
     @Autowired
-    private UserDetailsServiceImpl userDetailsService;
-
+    private PasswordEncoder passwordEncoder;
 
     // accounts *********************************************************************************
     @PutMapping("transfer")
@@ -57,16 +52,17 @@ public class BankController {
 
     @PostMapping("account/create")
     public void create(@RequestBody CreateAccountRequest request) {
-        accountService.createAccount(request.getAccountNumber(), request.getBalance());
+        accountService.createAccount(request.getAccountNumber(),
+                request.getBalance(),
+                request.getCustomerId());
     }
-
 
     // customer ************************************************************************************
     @PostMapping("customer/create")
     public void createCustomer(@RequestBody CreateCustomerRequest request) {
         customerService.createCustomer(request.getCustomerName(),
                 request.getUsername(),
-                request.getPassword());
+                passwordEncoder.encode(request.getPassword()));
     }
 
 }

@@ -1,9 +1,10 @@
-package ee.bcs.valiit.controller;
+package ee.bcs.valiit.controller.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,10 +24,10 @@ public class CustomerRepository {
         jdbcTemplate.update(sql, paramMap);
     }
 
-    public void deleteCustomer(BigInteger id) {
-        String sql = "DELETE FROM customer WHERE id = :id";
-        Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("id", id);
-        jdbcTemplate.update(sql, paramMap);
+    public String getCustomerPassword(String username) {
+        String sql = "SELECT password FROM customer WHERE username = :username";
+        Map<String, String> paramMap = new HashMap<>();
+        paramMap.put("username", username);
+        return jdbcTemplate.queryForObject(sql, paramMap, String.class);
     }
 }

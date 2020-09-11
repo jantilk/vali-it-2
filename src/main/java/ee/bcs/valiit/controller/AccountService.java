@@ -1,5 +1,6 @@
 package ee.bcs.valiit.controller;
 
+import ee.bcs.valiit.controller.repository.AccountRepository;
 import ee.bcs.valiit.controller.request.AccountsRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,8 +60,8 @@ public class AccountService {
         return accountRepository.getAccounts();
     }
 
-    public void createAccount(String accountNumber, BigDecimal balance) {
-        accountRepository.createAccount(accountNumber, balance);
+    public void createAccount(String accountNumber, BigDecimal balance, BigDecimal customerId) {
+        accountRepository.createAccount(accountNumber, balance, customerId);
     }
 }
 

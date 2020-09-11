@@ -15,7 +15,6 @@ createNewCustomerButton.addEventListener('click', function () {
             customerName: createNewCustomerName.value,
             username: createNewCustomerUsername.value,
             password: createNewCustomerPassword.value
-
         })
     })
         .then(function(response) {

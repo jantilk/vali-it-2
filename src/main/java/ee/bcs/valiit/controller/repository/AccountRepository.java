@@ -1,4 +1,4 @@
-package ee.bcs.valiit.controller;
+package ee.bcs.valiit.controller.repository;
 
 import ee.bcs.valiit.controller.request.AccountRowMapper;
 import ee.bcs.valiit.controller.request.AccountsRequest;
@@ -48,13 +48,13 @@ public class AccountRepository {
         return accountsRequests;
     }
 
-    public void createAccount(String accountNumber, BigDecimal balance) {
-        String sql = "INSERT INTO account (account_number, balance) " +
-                    "VALUES (:accountNumber, :balance)";
+    public void createAccount(String accountNumber, BigDecimal balance, BigDecimal customerId) {
+        String sql = "INSERT INTO account (account_number, balance, customer_id) " +
+                    "VALUES (:accountNumber, :balance, :customerId)";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("accountNumber", accountNumber);
         paramMap.put("balance", balance);
+        paramMap.put("customerId", customerId);
         jdbcTemplate.update(sql, paramMap);
     }
-
 }

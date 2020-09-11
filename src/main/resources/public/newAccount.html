@@ -1,42 +1,39 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Bank</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Cache-Control" content="NO-CACHE">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="myStyle.css"/>
+    <link rel="stylesheet" href="CSS/myStyle.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-<div id="nav-placeholder">
-
-</div>
-<script>
-    $(function () {
-        $("#nav-placeholder").load("navbar.html");
-    });
-</script>
+<a href="index.html">Bank</a>
+<a href="account.html">Account</a>
+<a href="newAccount.html">Create New Account</a>
+<a href="newCustomer.html">Create New Customer</a>
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
-            <input id="createNewCustomerName" class="form-control" placeholder="new customer name">
-            <input id="createNewCustomerUsername" class="form-control" placeholder="set username">
-            <input id="createNewCustomerPassword" class="form-control" placeholder="set password">
+            <input id="createNewAccountNumber" class="form-control" placeholder="new account number">
+            <input id="createNewAccountBalance" class="form-control" placeholder="set initial balance">
+            <input id="createNewAccountCustomerId" class="form-control" placeholder="customer id">
         </div>
         <div class="col-sm-3">
-            <button id="createNewCustomerButton" type="button" class="btn btn-primary">Create Customer</button>
+            <button id="createNewAccountButton" type="button" class="btn btn-primary">Create Account</button>
         </div>
         <div class="col-sm-3">
-            <p id="createNewCustomerResponse">waiting input...</p>
+            <p id="createNewAccountResponse">waiting input...</p>
         </div>
         <div class="col-sm-3"></div>
     </div>
 </div>
 
-<script src="customer.js"></script>
+<script src="JS/createAccount.js"></script>
 </body>
 </html>
